@@ -62,6 +62,7 @@ namespace TraceBack.BLL
                                 throw ex;
                             }
                             connection.Close();
+                            
                         }
 
                         apiResult.RecordCount = 0;
