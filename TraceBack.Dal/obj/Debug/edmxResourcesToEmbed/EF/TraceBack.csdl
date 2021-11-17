@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TraceBackModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="base_constant">
+    <Key>
+      <PropertyRef Name="constant_id" />
+    </Key>
+    <Property Name="constant_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="constant_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="constant_group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="constant_value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="constant_remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="base_ent">
+    <Key>
+      <PropertyRef Name="ent_id" />
+    </Key>
+    <Property Name="ent_id" Type="Guid" Nullable="false" />
+    <Property Name="ent_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ent_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ent_business_address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ent_registered_address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="row_state" Type="Int32" Nullable="false" />
+    <Property Name="create_user" Type="Guid" />
+    <Property Name="create_time" Type="DateTime" Precision="3" />
+    <Property Name="upd_user" Type="Guid" />
+    <Property Name="upd_time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="base_log">
+    <Key>
+      <PropertyRef Name="log_id" />
+    </Key>
+    <Property Name="log_id" Type="Guid" Nullable="false" />
+    <Property Name="log_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="log_user" Type="Guid" Nullable="false" />
+    <Property Name="log_action_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="log_message" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="log_type" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="base_menu">
+    <Key>
+      <PropertyRef Name="menu_id" />
+    </Key>
+    <Property Name="menu_id" Type="Guid" Nullable="false" />
+    <Property Name="menu_name_en" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="menu_name_cn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="menu_url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="menu_icon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="menu_level" Type="Int32" Nullable="false" />
+    <Property Name="menu_parent" Type="Guid" Nullable="false" />
+    <Property Name="menu_display_order" Type="Int32" Nullable="false" />
+    <Property Name="menu_title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="menu_remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="row_state" Type="Int32" Nullable="false" />
+    <Property Name="create_user" Type="Guid" />
+    <Property Name="create_time" Type="DateTime" Precision="3" />
+    <Property Name="upd_user" Type="Guid" />
+    <Property Name="upd_time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="base_role">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="Guid" Nullable="false" />
+    <Property Name="role_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="role_remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="row_state" Type="Int32" Nullable="false" />
+    <Property Name="create_user" Type="Guid" />
+    <Property Name="create_time" Type="DateTime" Precision="3" />
+    <Property Name="upd_user" Type="Guid" />
+    <Property Name="upd_time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="base_role_menu">
+    <Key>
+      <PropertyRef Name="role_id" />
+      <PropertyRef Name="role_menu" />
+    </Key>
+    <Property Name="role_id" Type="Guid" Nullable="false" />
+    <Property Name="role_menu" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="base_user_info">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Guid" Nullable="false" />
+    <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_ent" Type="Guid" />
+    <Property Name="row_state" Type="Int32" Nullable="false" />
+    <Property Name="create_user" Type="Guid" />
+    <Property Name="create_time" Type="DateTime" Precision="3" />
+    <Property Name="upd_user" Type="Guid" />
+    <Property Name="upd_time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="base_user_role">
+    <Key>
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="user_id" Type="Guid" Nullable="false" />
+    <Property Name="role_id" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="TraceBackEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="base_constant" EntityType="Self.base_constant" />
+    <EntitySet Name="base_ent" EntityType="Self.base_ent" />
+    <EntitySet Name="base_log" EntityType="Self.base_log" />
+    <EntitySet Name="base_menu" EntityType="Self.base_menu" />
+    <EntitySet Name="base_role" EntityType="Self.base_role" />
+    <EntitySet Name="base_role_menu" EntityType="Self.base_role_menu" />
+    <EntitySet Name="base_user_info" EntityType="Self.base_user_info" />
+    <EntitySet Name="base_user_role" EntityType="Self.base_user_role" />
+  </EntityContainer>
+</Schema>

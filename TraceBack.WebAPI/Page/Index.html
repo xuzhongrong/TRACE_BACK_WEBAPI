@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>校园网站内容管理系统</title>
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/font-awesome/font-awesome.min.css" />
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="/assets/css/fonts.googleapis.com.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="/assets/css/ace-rtl.min.css" />
+
+    <!-- basic scripts -->
+    <script src="/assets/js/jquery-2.1.4.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <!-- ace scripts -->
+    <script src="/assets/js/ace.min.js"></script>
+    <script src="/assets/js/ace-extra.min.js"></script>
+    <script src="/assets/js/ace-elements.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/plugin/layer/theme/default/layer.css" />
+    <script src="/assets/plugin/layer/layer.js"></script>
+
+    <script src="/assets/js/common.js"></script>
+</head>
+
+<body class="no-skin">
+    <div id="navbar" class="navbar navbar-default ace-save-state">
+        <div class="navbar-container ace-save-state" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left"
+                    id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <div class="navbar-header pull-left">
+                <a href="/Page/Index.html" class="navbar-brand">
+                    <small>
+                        <i class="fa fa-leaf"></i>
+                        校园网站内容管理系统
+                    </small>
+                </a>
+            </div>
+
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    <li class="light-blue dropdown-modal">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <img class="nav-user-photo" src="/assets/images/user.jpg" id="img_user_avatars" alt="Jason's Photo" />
+                            <span class="user-info">
+                                <small>欢迎,</small>
+                                <span id="span_user_name"></span>
+                            </span>
+
+                            <i class="ace-icon fa fa-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="#">
+                                    <i class="ace-icon fa fa-cog"></i>
+                                    Settings
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="profile.html">
+                                    <i class="ace-icon fa fa-user"></i>
+                                    Profile
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="ace-icon fa fa-power-off"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /.navbar-container -->
+    </div>
+
+    <div class="main-container ace-save-state" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.loadState('main-container') } catch (e) { }
+        </script>
+
+        <div id="sidebar" class="sidebar responsive ace-save-state">
+            <script type="text/javascript">
+                try { ace.settings.loadState('sidebar') } catch (e) { }
+            </script>
+
+            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                    <button class="btn btn-success">
+                        <i class="ace-icon fa fa-signal"></i>
+                    </button>
+
+                    <button class="btn btn-info">
+                        <i class="ace-icon fa fa-pencil"></i>
+                    </button>
+
+                    <button class="btn btn-warning">
+                        <i class="ace-icon fa fa-users"></i>
+                    </button>
+
+                    <button class="btn btn-danger">
+                        <i class="ace-icon fa fa-cogs"></i>
+                    </button>
+                </div>
+
+                <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                    <span class="btn btn-success"></span>
+
+                    <span class="btn btn-info"></span>
+
+                    <span class="btn btn-warning"></span>
+
+                    <span class="btn btn-danger"></span>
+                </div>
+            </div><!-- /.sidebar-shortcuts -->
+
+            <ul class="nav nav-list" id="nav_list"></ul><!-- /.nav-list -->
+
+            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                <i id="sidebar-toggle-icon"
+                   class="ace-icon fa fa-angle-double-left ace-save-state"
+                   data-icon1="ace-icon fa fa-angle-double-left"
+                   data-icon2="ace-icon fa fa-angle-double-right"></i>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="#">主页</a>
+                        </li>
+
+                        <li>
+                            <a href="#">系统管理</a>
+                        </li>
+                        <li class="active">用户管理</li>
+                    </ul><!-- /.breadcrumb -->
+                </div>
+
+                
+            </div>
+        </div><!-- /.main-content -->
+
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+                </div>
+            </div>
+        </div>
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div><!-- /.main-container -->
+
+    <div id="model_login">
+        <div class="login-container">
+            <div class="space-6"></div>
+
+            <div id="login-box" class="login-box widget-box no-border">
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <h4 class="header blue lighter bigger">
+                            <i class="fa fa-coffee green"></i>
+                            请重新登录444
+                        </h4>
+
+                        <div class="space-6"></div>
+
+                        <form>
+                            <fieldset>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="用户名" id="userName" />
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                </div>
+
+                                <div class="space-6"></div>
+
+                                <div class="input-group">
+                                    <input type="password" class="form-control" placeholder="密码" id="pwd" />
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                </div>
+
+                                <div class="space"></div>
+
+                                <div class="clearfix">
+                                    <button type="button" onclick="onLogin();"
+                                            class="width-35 pull-right btn btn-sm btn-primary">
+                                        <i class="fa fa-key"></i>
+                                        登录
+                                    </button>
+                                </div>
+
+                                <div class="space-4"></div>
+                            </fieldset>
+                        </form>
+
+                    </div><!-- /widget-main -->
+
+                    <div class="toolbar clearfix">
+                        <div>
+                            <a href="#" onclick="onShowFoget(); return false;"
+                               class="forgot-password-link">
+                                <i class="fa fa-arrow-left"></i>
+                                忘记密码
+                            </a>
+                        </div>
+                    </div>
+                </div><!-- /widget-body -->
+            </div><!-- /login-box -->
+
+            <div id="forgot-box" class="forgot-box widget-box no-border">
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <h4 class="header red lighter bigger">
+                            <i class="icon-key"></i>
+                            找回密码
+                        </h4>
+
+                        <div class="space-6"></div>
+                        <p>
+                            请输入您的电子邮箱用以找回密码
+                        </p>
+
+                        <form>
+                            <fieldset>
+                                <label class="block clearfix">
+                                    <span class="block input-icon input-icon-right">
+                                        <input type="email" class="form-control" placeholder="Email" />
+                                        <i class="icon-envelope"></i>
+                                    </span>
+                                </label>
+
+                                <div class="clearfix">
+                                    <button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+                                        <i class="icon-lightbulb"></i>
+                                        发送!
+                                    </button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div><!-- /widget-main -->
+
+                    <div class="toolbar center">
+                        <a href="#" onclick="onShowLogin(); return false;" class="back-to-login-link">
+                            Back to login
+                            <i class="icon-arrow-right"></i>
+                        </a>
+                    </div>
+                </div><!-- /widget-body -->
+            </div><!-- /forgot-box -->
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+
+    <!-- inline scripts related to this page -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            initPage();
+        });
+    </script>
+</body>
+</html>

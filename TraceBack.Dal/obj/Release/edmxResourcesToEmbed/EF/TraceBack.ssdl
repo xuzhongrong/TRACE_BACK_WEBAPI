@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TraceBackModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="base_constant">
+    <Key>
+      <PropertyRef Name="constant_id" />
+    </Key>
+    <Property Name="constant_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="constant_type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="constant_group" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="constant_value" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="constant_remark" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="base_ent">
+    <Key>
+      <PropertyRef Name="ent_id" />
+    </Key>
+    <Property Name="ent_id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ent_name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ent_code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ent_business_address" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ent_registered_address" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="row_state" Type="int" Nullable="false" />
+    <Property Name="create_user" Type="uniqueidentifier" />
+    <Property Name="create_time" Type="datetime" />
+    <Property Name="upd_user" Type="uniqueidentifier" />
+    <Property Name="upd_time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="base_log">
+    <Key>
+      <PropertyRef Name="log_id" />
+    </Key>
+    <Property Name="log_id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="log_time" Type="datetime" Nullable="false" />
+    <Property Name="log_user" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="log_action_name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="log_message" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="log_type" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="base_menu">
+    <Key>
+      <PropertyRef Name="menu_id" />
+    </Key>
+    <Property Name="menu_id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="menu_name_en" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="menu_name_cn" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="menu_url" Type="varchar" MaxLength="200" />
+    <Property Name="menu_icon" Type="varchar" MaxLength="50" />
+    <Property Name="menu_level" Type="int" Nullable="false" />
+    <Property Name="menu_parent" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="menu_display_order" Type="int" Nullable="false" />
+    <Property Name="menu_title" Type="varchar" MaxLength="50" />
+    <Property Name="menu_remark" Type="varchar" MaxLength="200" />
+    <Property Name="row_state" Type="int" Nullable="false" />
+    <Property Name="create_user" Type="uniqueidentifier" />
+    <Property Name="create_time" Type="datetime" />
+    <Property Name="upd_user" Type="uniqueidentifier" />
+    <Property Name="upd_time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="base_role">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="role_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="role_remark" Type="varchar" MaxLength="200" />
+    <Property Name="row_state" Type="int" Nullable="false" />
+    <Property Name="create_user" Type="uniqueidentifier" />
+    <Property Name="create_time" Type="datetime" />
+    <Property Name="upd_user" Type="uniqueidentifier" />
+    <Property Name="upd_time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="base_role_menu">
+    <Key>
+      <PropertyRef Name="role_id" />
+      <PropertyRef Name="role_menu" />
+    </Key>
+    <Property Name="role_id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="role_menu" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="base_user_info">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="user_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_pwd" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_ent" Type="uniqueidentifier" />
+    <Property Name="row_state" Type="int" Nullable="false" />
+    <Property Name="create_user" Type="uniqueidentifier" />
+    <Property Name="create_time" Type="datetime" />
+    <Property Name="upd_user" Type="uniqueidentifier" />
+    <Property Name="upd_time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="base_user_role">
+    <Key>
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="user_id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="role_id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="TraceBackModelStoreContainer">
+    <EntitySet Name="base_constant" EntityType="Self.base_constant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="base_ent" EntityType="Self.base_ent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="base_log" EntityType="Self.base_log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="base_menu" EntityType="Self.base_menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="base_role" EntityType="Self.base_role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="base_role_menu" EntityType="Self.base_role_menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="base_user_info" EntityType="Self.base_user_info" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="base_user_role" EntityType="Self.base_user_role" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TraceBackModelStoreContainer" CdmEntityContainer="TraceBackEntities">
+    <EntitySetMapping Name="base_constant">
+      <EntityTypeMapping TypeName="TraceBackModel.base_constant">
+        <MappingFragment StoreEntitySet="base_constant">
+          <ScalarProperty Name="constant_id" ColumnName="constant_id" />
+          <ScalarProperty Name="constant_type" ColumnName="constant_type" />
+          <ScalarProperty Name="constant_group" ColumnName="constant_group" />
+          <ScalarProperty Name="constant_value" ColumnName="constant_value" />
+          <ScalarProperty Name="constant_remark" ColumnName="constant_remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="base_ent">
+      <EntityTypeMapping TypeName="TraceBackModel.base_ent">
+        <MappingFragment StoreEntitySet="base_ent">
+          <ScalarProperty Name="ent_id" ColumnName="ent_id" />
+          <ScalarProperty Name="ent_name" ColumnName="ent_name" />
+          <ScalarProperty Name="ent_code" ColumnName="ent_code" />
+          <ScalarProperty Name="ent_business_address" ColumnName="ent_business_address" />
+          <ScalarProperty Name="ent_registered_address" ColumnName="ent_registered_address" />
+          <ScalarProperty Name="row_state" ColumnName="row_state" />
+          <ScalarProperty Name="create_user" ColumnName="create_user" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="upd_user" ColumnName="upd_user" />
+          <ScalarProperty Name="upd_time" ColumnName="upd_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="base_log">
+      <EntityTypeMapping TypeName="TraceBackModel.base_log">
+        <MappingFragment StoreEntitySet="base_log">
+          <ScalarProperty Name="log_id" ColumnName="log_id" />
+          <ScalarProperty Name="log_time" ColumnName="log_time" />
+          <ScalarProperty Name="log_user" ColumnName="log_user" />
+          <ScalarProperty Name="log_action_name" ColumnName="log_action_name" />
+          <ScalarProperty Name="log_message" ColumnName="log_message" />
+          <ScalarProperty Name="log_type" ColumnName="log_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="base_menu">
+      <EntityTypeMapping TypeName="TraceBackModel.base_menu">
+        <MappingFragment StoreEntitySet="base_menu">
+          <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+          <ScalarProperty Name="menu_name_en" ColumnName="menu_name_en" />
+          <ScalarProperty Name="menu_name_cn" ColumnName="menu_name_cn" />
+          <ScalarProperty Name="menu_url" ColumnName="menu_url" />
+          <ScalarProperty Name="menu_icon" ColumnName="menu_icon" />
+          <ScalarProperty Name="menu_level" ColumnName="menu_level" />
+          <ScalarProperty Name="menu_parent" ColumnName="menu_parent" />
+          <ScalarProperty Name="menu_display_order" ColumnName="menu_display_order" />
+          <ScalarProperty Name="menu_title" ColumnName="menu_title" />
+          <ScalarProperty Name="menu_remark" ColumnName="menu_remark" />
+          <ScalarProperty Name="row_state" ColumnName="row_state" />
+          <ScalarProperty Name="create_user" ColumnName="create_user" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="upd_user" ColumnName="upd_user" />
+          <ScalarProperty Name="upd_time" ColumnName="upd_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="base_role">
+      <EntityTypeMapping TypeName="TraceBackModel.base_role">
+        <MappingFragment StoreEntitySet="base_role">
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+          <ScalarProperty Name="role_remark" ColumnName="role_remark" />
+          <ScalarProperty Name="row_state" ColumnName="row_state" />
+          <ScalarProperty Name="create_user" ColumnName="create_user" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="upd_user" ColumnName="upd_user" />
+          <ScalarProperty Name="upd_time" ColumnName="upd_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="base_role_menu">
+      <EntityTypeMapping TypeName="TraceBackModel.base_role_menu">
+        <MappingFragment StoreEntitySet="base_role_menu">
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="role_menu" ColumnName="role_menu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="base_user_info">
+      <EntityTypeMapping TypeName="TraceBackModel.base_user_info">
+        <MappingFragment StoreEntitySet="base_user_info">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_pwd" ColumnName="user_pwd" />
+          <ScalarProperty Name="user_ent" ColumnName="user_ent" />
+          <ScalarProperty Name="row_state" ColumnName="row_state" />
+          <ScalarProperty Name="create_user" ColumnName="create_user" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="upd_user" ColumnName="upd_user" />
+          <ScalarProperty Name="upd_time" ColumnName="upd_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="base_user_role">
+      <EntityTypeMapping TypeName="TraceBackModel.base_user_role">
+        <MappingFragment StoreEntitySet="base_user_role">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,809 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>校园网站内容管理系统</title>
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../assets/font-awesome/font-awesome.min.css" />
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="../../assets/css/fonts.googleapis.com.css" />
+    <link href="/assets1/img/favicon.png" rel="icon">
+    <link href="/assets1/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="../../assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="../../assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="../../assets/css/ace-rtl.min.css" />
+
+    <!-- basic scripts -->
+    <script src="../../assets/js/jquery-2.1.4.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+
+    <!-- ace scripts -->
+    <script src="../../assets/js/ace.min.js"></script>
+    <script src="../../assets/js/ace-extra.min.js"></script>
+    <script src="../../assets/js/ace-elements.min.js"></script>
+
+    <link rel="stylesheet" href="../../assets/plugin/layer/theme/default/layer.css" />
+    <script src="../../assets/plugin/layer/layer.js"></script>
+
+    <script src="../../assets/js/common.js"></script>
+
+    <!-- page content -->
+    <link rel="stylesheet" href="../../assets/plugin/bootstrap-table/bootstrap-table.css" />
+    <script type="text/javascript" src="../../assets/plugin/bootstrap-table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../../assets/plugin/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+
+    <link rel="stylesheet" href="../../assets/plugin/bootstrap-multiselect/bootstrap-multiselect.min.css" />
+    <script type="text/javascript" src="../../assets/plugin/bootstrap-multiselect/bootstrap-multiselect.min.js"></script>
+</head>
+
+<body class="no-skin">
+    <div id="navbar" class="navbar navbar-default black-bg ace-save-state">
+        <div class="navbar-container black-bg ace-save-state" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left"
+                    id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <div class="navbar-header pull-left">
+                <a href="/Page/Index.html" class="navbar-brand">
+                    <small>
+                        <i class="fa fa-leaf"></i>
+                        校园网站内容管理系统
+                    </small>
+                </a>
+            </div>
+
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    <li class="light-grey dropdown-modal">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <img class="nav-user-photo" src="/assets/images/user.jpg" id="img_user_avatars" alt="Jason's Photo" />
+                            <span class="user-info">
+                                <small>欢迎,</small>
+                                <span id="span_user_name"></span>
+                            </span>
+
+                            <i class="ace-icon fa fa-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="#">
+                                    <i class="ace-icon fa fa-cog"></i>
+                                    Settings
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="profile.html">
+                                    <i class="ace-icon fa fa-user"></i>
+                                    Profile
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="ace-icon fa fa-power-off"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /.navbar-container -->
+    </div>
+
+    <div class="main-container ace-save-state" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.loadState('main-container') } catch (e) { }
+        </script>
+
+        <div id="sidebar" class="sidebar responsive ace-save-state">
+            <script type="text/javascript">
+                try { ace.settings.loadState('sidebar') } catch (e) { }
+            </script>
+
+            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                    <button class="btn btn-success">
+                        <i class="ace-icon fa fa-signal"></i>
+                    </button>
+
+                    <button class="btn btn-info">
+                        <i class="ace-icon fa fa-pencil"></i>
+                    </button>
+
+                    <button class="btn btn-warning">
+                        <i class="ace-icon fa fa-users"></i>
+                    </button>
+
+                    <button class="btn btn-danger">
+                        <i class="ace-icon fa fa-cogs"></i>
+                    </button>
+                </div>
+
+                <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                    <span class="btn btn-success"></span>
+
+                    <span class="btn btn-info"></span>
+
+                    <span class="btn btn-warning"></span>
+
+                    <span class="btn btn-danger"></span>
+                </div>
+            </div><!-- /.sidebar-shortcuts -->
+
+            <ul class="nav nav-list" id="nav_list"></ul><!-- /.nav-list -->
+
+            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                <i id="sidebar-toggle-icon"
+                   class="ace-icon fa fa-angle-double-left ace-save-state"
+                   data-icon1="ace-icon fa fa-angle-double-left"
+                   data-icon2="ace-icon fa fa-angle-double-right"></i>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="#">主页</a>
+                        </li>
+
+                        <li>
+                            <i class="fa fa-desktop"></i>
+                            <a href="#">系统管理</a>
+                        </li>
+                        <li class="active"><i class="fa fa-meh-o"></i>栏目管理</li>
+                    </ul><!-- /.breadcrumb -->
+                </div>
+
+                <div class="page-content">
+                    <div class="page-header">
+                        <h1>
+                            <i class="fa fa-meh-o"></i>
+                            栏目管理
+                            <small>
+                                <i class="ace-icon fa fa-angle-double-right"></i>
+                                功能：栏目列表、新增栏目、删除栏目、查看栏目信息等。
+                            </small>
+                        </h1>
+                    </div><!-- /.page-header -->
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- PAGE CONTENT BEGINS -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="widget-box">
+                                        <div class="widget-header">
+                                            <h4 class="widget-title lighter smaller">栏目列表</h4>
+                                        </div>
+
+                                        <div class="widget-body">
+                                            <!--
+                                                <div class="widget-main padding-8">
+                                                <form id="form1" action="" method="get" class="form-inline">
+                                                    <div class="form-group">
+                                                        <label class="control-label ">用户名：</label>
+                                                        <input type="text" id="txtUserName" class="form-control" name="txtUserName" placeholder="用户名" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label ">电子邮箱：</label>
+                                                        <input type="text" id="txtUserEmail" class="form-control" name="txtUserEmail" placeholder="电子邮箱" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label ">所属单位：</label>
+                                                        <input type="text" id="txtEntName" class="form-control" name="txtEntName" placeholder="所属单位" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label ">地址：</label>
+                                                        <input type="text" id="txtAddress" class="form-control" name="txtAddress" placeholder="地址" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label ">状态：</label>
+                                                        <select class="form-control" id="userState" name="userState">
+                                                            <option value="2">全部</option>
+                                                            <option value="1">正常</option>
+                                                            <option value="0">禁用</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <input type="button" class="btn btn-sm btn-primary" value="搜索" id="btnQuery" onclick="Query();" />
+                                                </form>
+                                            </div>
+                                                -->
+
+                                            <div class="widget-main padding-8">
+                                                <div id="toolbar" class="btn-group">
+                                                    <button class="btn btn-success btn-sm" id="add" onclick="onView()"><i class="ace-icon fa fa-plus"></i> 新增 </button>
+                                                    <button class="btn btn-warning btn-sm" id="refresh" onclick="Query();"><i class="ace-icon fa fa-refresh"></i> 刷新 </button>
+                                                </div>
+
+                                                <table id="tbData" data-toggle="bootstrap-table"></table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PAGE CONTENT ENDS -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.page-content -->
+            </div>
+        </div><!-- /.main-content -->
+
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+                </div>
+            </div>
+        </div>
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div><!-- /.main-container -->
+
+    <div id="model_login">
+        <div class="login-container">
+            <div class="space-6"></div>
+
+            <div id="login-box" class="login-box widget-box no-border">
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <h4 class="header blue lighter bigger">
+                            <i class="fa fa-coffee green"></i>
+                            请重新登录
+                        </h4>
+
+                        <div class="space-6"></div>
+
+                        <form>
+                            <fieldset>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="用户名" id="userName" />
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                </div>
+
+                                <div class="space-6"></div>
+
+                                <div class="input-group">
+                                    <input type="password" class="form-control" placeholder="密码" id="pwd" />
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                </div>
+
+                                <div class="space"></div>
+
+                                <div class="clearfix">
+                                    <button type="button" onclick="onLogin()"
+                                            class="width-35 pull-right btn btn-sm btn-primary">
+                                        <i class="fa fa-key"></i>
+                                        登录
+                                    </button>
+                                </div>
+
+                                <div class="space-4"></div>
+                            </fieldset>
+                        </form>
+
+                    </div><!-- /widget-main -->
+
+                    <div class="toolbar clearfix">
+                        <div>
+                            <a href="#" onclick="onShowFoget(); return false;"
+                               class="forgot-password-link">
+                                <i class="fa fa-arrow-left"></i>
+                                忘记密码
+                            </a>
+                        </div>
+                    </div>
+                </div><!-- /widget-body -->
+            </div><!-- /login-box -->
+
+            <div id="forgot-box" class="forgot-box widget-box no-border">
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <h4 class="header red lighter bigger">
+                            <i class="icon-key"></i>
+                            找回密码
+                        </h4>
+
+                        <div class="space-6"></div>
+                        <p>
+                            请输入您的电子邮箱用以找回密码
+                        </p>
+
+                        <form>
+                            <fieldset>
+                                <label class="block clearfix">
+                                    <span class="block input-icon input-icon-right">
+                                        <input type="email" class="form-control" placeholder="Email" />
+                                        <i class="icon-envelope"></i>
+                                    </span>
+                                </label>
+
+                                <div class="clearfix">
+                                    <button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+                                        <i class="icon-lightbulb"></i>
+                                        发送!
+                                    </button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div><!-- /widget-main -->
+
+                    <div class="toolbar center">
+                        <a href="#" onclick="onShowLogin(); return false;" class="back-to-login-link">
+                            Back to login
+                            <i class="icon-arrow-right"></i>
+                        </a>
+                    </div>
+                </div><!-- /widget-body -->
+            </div><!-- /forgot-box -->
+        </div>
+    </div>
+
+    <div id="model_column_info">
+        <div class="col-sm-11">
+            <form class="form-horizontal" role="form">
+                <div class="space-16"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="column_name"> 栏目名<span class="warning">*</span> </label>
+
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input type="text" id="column_name" placeholder="栏目名" class="form-control" />
+                            <span class="input-group-addon">
+                                <i class="ace-icon fa fa-user-o"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="column_parent"> 父栏目 <span class="warning">*</span> </label>
+
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input type="email" id="column_parent" placeholder="父栏目" class="form-control" />
+                            <span class="input-group-addon">
+                                <i class="ace-icon fa fa-envelope-o"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="column_level"> 栏目层级 <span class="warning">*</span> </label>
+
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input type="text" id="column_level" placeholder="栏目说明" class="form-control" />
+                            <span class="input-group-addon">
+                                <i class="ace-icon fa fa-phone"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="column_explain"> 栏目说明 </label>
+
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input type="text" id="column_explain" placeholder="栏目说明" class="form-control" />
+                            <span class="input-group-addon">
+                                <i class="ace-icon fa fa-address-card"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="user_ent"> 所属公司 </label>
+
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <select id="user_ent" class="form-control" data-placeholder="选择所属公司"></select>
+                            <span class="input-group-addon">
+                                <i class="ace-icon fa fa-globe"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="user_role"> 用户角色 </label>
+
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <select id="user_role" class="form-control multiselect" multiple="multiple"></select>
+                            <span class="input-group-addon">
+                                <i class="ace-icon fa fa-life-ring"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>-->
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='../../assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+
+    <!-- inline scripts related to this page -->
+    <script type="text/javascript">
+        $(function () {
+            initPage();
+
+            $("#model_column_info").hide();
+
+            //initEnt();
+            //initRole();
+            Query();
+
+            $("#sidebar-collapse").click();
+        });
+
+        function initRole() {
+            // 接口参数
+            var para = {
+                ApiName: 'GetRoleList'
+            };
+
+            $.ajax({
+                //请求方式
+                type: "POST",
+                //请求的媒体类型
+                contentType: "application/json;charset=UTF-8",
+                //数据，json字符串
+                data: JSON.stringify(para),
+                //请求地址
+                url: "http://localhost:61482/SysManage/SysManage",
+                //请求成功
+                success: function (result) {
+                    var jsonResult = JSON.parse(result);
+                    var roles = jsonResult.Data;
+                    var user_role = $("#user_role");
+                    for (var i in roles) {
+                        user_role.append($("<option></option>").val(roles[i].role_id.toLowerCase()).html(roles[i].role_name));
+                    }
+                    $('#user_role').multiselect();
+                },
+                //请求失败，包含具体的错误信息
+                error: function (e) {
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        }
+
+        function initEnt() {
+            // 接口参数
+            var para = {
+                ApiName: 'GetEntList'
+            };
+
+            $.ajax({
+                //请求方式
+                type: "POST",
+                //请求的媒体类型
+                contentType: "application/json;charset=UTF-8",
+                //数据，json字符串
+                data: JSON.stringify(para),
+                //请求地址
+                url: "http://localhost:61482/UserManage/UserManage",
+                //请求成功
+                success: function (result) {
+                    var jsonResult = JSON.parse(result);
+                    var ents = jsonResult.Data;
+                    var user_ent = $("#user_ent");
+                    for (var i in ents) {
+                        user_ent.append($("<option></option>").val(ents[i].ent_id).html(ents[i].ent_name));
+                    }
+                },
+                //请求失败，包含具体的错误信息
+                error: function (e) {
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        }
+
+        function onSave(column_id, lock) {
+            if (!lock) {
+                lock = true;
+
+                // 接口参数
+                var para = {
+                    ApiName: 'SaveColumn',
+                    Data: {
+                        column_id: column_id,
+                        column_name: $("#column_name").val(),
+                        column_level: $("#column_level").val(),
+                        column_parent: $("#column_parent").val(),
+                        column_explain: $("#column_explain").val()
+                    }
+                };
+
+                if (para.Data.column_name == "" ) {
+                    layer.msg("请设定栏目名");
+                    return false;
+                }
+
+                $.ajax({
+                    type: "post",
+                    contentType: "application/json;charset=UTF-8",
+                    data: JSON.stringify(para),
+                    dataType: "json",
+                    url: "http://localhost:61482/FunManage/FunManage",
+                    success: function (data) {
+                        var jsonResult = JSON.parse(data);
+                        if (jsonResult.Result == 1) {
+                            layer.msg('保存成功', { icon: 1 });
+                        } else {
+                            layer.msg('保存失败:' + jsonResult.Message, { icon: 2 });
+                        }
+                    }
+                });
+
+                layer.closeAll();
+
+                Query();
+            }
+        }
+
+        function onView(column_id) {
+            if (column_id == null) {
+                $("#column_name").val("");
+                $("#column_parent").val("");
+                $("#column_level").val("");
+                $("#column_explain").val("");
+
+                $.each($('#user_role option'), function (i, option) {
+                    $(option).prop('selected', false);
+                });
+            } else {
+                var data = $("#tbData").bootstrapTable('getData');
+                var column = $.grep(data, function (m) {
+                    return m.column_id == column_id;
+                })[0];
+
+                $("#column_name").val(column.column_name);
+                $("#column_parent").val(column.column_parent);
+                $("#column_level").val(column.column_level);
+                $("#column_explain").val(column.column_explain);
+
+                var column_ids = column.column_id.toLowerCase().split(",");
+                //var options = $('#user_role option');
+                /*
+                for (var i in options) {
+                    var o = $('#user_role option[value="' + options[i].value + '"] ');
+                    if (course_ids.indexOf(o.val()) >= 0) {
+                        o.prop('selected', true);
+                    } else {
+                        o.prop('selected', false);
+                    }
+                }*/
+            }
+
+            //$('#user_role').multiselect('destroy');
+            //$('#user_role').multiselect();
+
+
+            layer.open({
+                type: 1,
+                title: '栏目信息',
+                area: ['500px', '450px'],
+                shadeClose: false, //点击遮罩关闭
+                content: $('#model_column_info'),
+                btn: ['确定', '取消'],
+                yes: function (index, layero) {//添加人员
+                    var lock = false;//默认未锁定
+                    layer.confirm('将向服务器提交数据，请确认', { icon: 3, btn: ['确定', '取消'], title: "提示" }, function () {
+                        onSave(column_id, lock);
+                    });
+                },
+                btn2: function (index, layero) {
+                    return;
+                },
+                cancel: function () {
+                    return;
+                },
+                end: function () {
+                    $('#model_column_info').hide();
+                }
+            });
+
+            $("#model_column_info").show();
+        }
+
+        function onDelete(column_id) {
+        }
+
+        function onSetStatus(user_id, row_state) {
+            var lock = false;
+            if (!lock) {
+                lock = true;
+
+                // 接口参数
+                var para = {
+                    ApiName: 'SetUserStatus',
+                    Data: {
+                        user_id: user_id,
+                        row_state: row_state,
+                        upd_user: JSON.parse(localStorage.getItem("User")).user_id
+                    }
+                };
+                console.log(para);
+
+                if (para.Data.user_id == null || para.Data.user_id == "undefined" || isNaN(para.Data.row_state)) {
+                    layer.msg("参数：用户ID、状态、修改者不足，请核查");
+                    return false;
+                }
+
+                $.ajax({
+                    type: "post",
+                    contentType: "application/json;charset=UTF-8",
+                    data: JSON.stringify(para),
+                    dataType: "json",
+                    url: "http://localhost:61482/UserManage/UserManage",
+                    success: function (data) {
+                        var jsonResult = JSON.parse(data);
+                        if (jsonResult.Result == 1) {
+                            layer.msg('状态修改成功', { icon: 1 });
+                        } else {
+                            layer.msg('状态修改失败:' + jsonResult.Message, { icon: 2 });
+                        }
+
+                        Query();
+                    }
+                });
+            }
+
+        }
+
+        function Query(pageNumber, pageSize) {
+            if (pageNumber == null) {
+                pageNumber = 1;
+            }
+
+            if (pageSize == null) {
+                pageSize = 10;
+            }
+
+            // 接口参数
+            var para = {
+                ApiName: 'GetColumnList',
+                Data: {
+                    column_name: $("#txtColumnName").val(),
+                    column_parent: $("#txtColumnParent").val(),
+                    column_level: $("#txtColumnLevel").val(),
+                    column_explain: $("#txtColumnExplain").val(),
+                }
+            };
+
+            if (para.Data.row_state != 1 && para.Data.row_state != 0) {
+                para.Data.row_state = null;
+            }
+
+            // 通过Ajax调用用户列表接口
+            $.ajax({
+                //请求方式
+                type: "POST",
+                //请求的媒体类型
+                contentType: "application/json;charset=UTF-8",
+                //数据，json字符串
+                data: JSON.stringify(para),
+                //请求地址
+                url:"http://localhost:61482/FunManage/FunManage",
+                //请求成功
+                success: function (result) {
+                    var jsonResult = JSON.parse(result);
+
+                    var options = {
+                        rowStyle: function (row, index) { //设置行的特殊样式
+                            //这里有5个取值颜色['active', 'success', 'info', 'warning', 'danger'];
+                            var strclass = "";
+                            if (index % 2) {
+                                strclass = "success";
+                            } else {
+                                strclass = "info";
+                            }
+
+                            if (row.row_state == 0) {
+                                strclass = "danger";
+                            }
+
+                            return { classes: strclass }
+                        },
+                        data: null,
+                        showLoading: true,
+                        striped: true,                      //是否显示行间隔色
+                        cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                        pagination: true,                   //是否显示分页（*）
+                        sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+                        pageNumber: 1,                       //初始化加载第一页，默认第一页
+                        pageSize: 10,                       //每页的记录行数（*）
+                        pageList: [10, 20, 50, 100],        //可供选择的每页的行数（*）
+                        clickToSelect: true,                //是否启用点击选中行
+                        uniqueId: "user_id",                     //每一行的唯一标识，一般为主键列
+                        columns: [
+                            {
+                                title: '序号', formatter: function (value, row, index) {
+                                    return pageSize * (pageNumber - 1) + index + 1;
+                                }
+                            },
+                            { field: 'column_name', title: '栏目名' },
+                            { field: 'column_parent', title: '父栏目' },
+                            { field: 'column_level', title: '栏目层级' },
+                            { field: 'column_explain', title: '栏目介绍' },
+                            /*
+                            {
+                                field: 'row_state', align: 'center', title: '状态', formatter: function (value, row, index) {
+                                    if (row.row_state == 1) {
+                                        return "正常";
+                                    } else {
+                                        return "已禁用";
+                                    }
+                                }
+                            },
+                            { field: 'role_name', title: '角色' },
+                            */
+                            {
+                                title: '操作', formatter: function (value, row, index) {
+                                    var btn_group = '<div class="btn-group">';
+                                    btn_group += '<button type="button" class="btn btn-success btn-sm item_view" name="item_view" onclick="onView(\'' + row.column_id + '\');"><i class="fa fa-street-view"></i> 查看/修改 </button>';
+                                   // btn_group += '<button type="button" class="btn btn-danger btn-sm item_delete" name="item_delete" onclick="onDelete(\'' + row.user_id + '\');"><i class="fa fa-times"></i> 删除 </button>';
+                                   /* if (row.row_state == 1) {
+                                        btn_group += '<button type="button" class="btn btn-warning btn-sm item_disable" name="item_disable" onclick="onSetStatus(\'' + row.course_id + '\', 0);"><i class="fa fa-toggle-off"></i> 禁用 </button>';
+                                    } else {
+                                        btn_group += '<button type="button" class="btn btn-primary btn-sm item_enable" name="item_enable" onclick="onSetStatus(\'' + row.course_id + '\', 1);"><i class="fa fa-toggle-on"></i> 启用 </button>';
+                                    }*/
+                                    btn_group += '</div>';
+                                    return btn_group;
+                                }
+                            }
+                        ]
+                    };
+
+                    if (jsonResult.Result == 1) {
+                        options.data = jsonResult.Data;
+                    } else {
+                        layer.msg(jsonResult.Message);
+                    }
+                    $('#tbData').bootstrapTable("destroy").bootstrapTable(options);
+
+                },
+                //请求失败，包含具体的错误信息
+                error: function (e) {
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

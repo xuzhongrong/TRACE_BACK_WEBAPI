@@ -1,0 +1,656 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>校园网站内容管理系统</title>
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../assets/font-awesome/font-awesome.min.css" />
+
+    <!-- page specific plugin styles -->
+    <!-- text fonts -->
+    <link rel="stylesheet" href="../../assets/css/fonts.googleapis.com.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="../../assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="../../assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="../../assets/css/ace-rtl.min.css" />
+
+    <!-- basic scripts -->
+    <script src="../../assets/js/jquery-2.1.4.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+
+    <!-- ace settings handler -->
+    <script type="text/javascript" src="../../assets/js/ace-extra.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/ace.min.js"></script>
+
+    <link rel="stylesheet" href="../../assets/plugin/layer/theme/default/layer.css" />
+    <script type="text/javascript" src="../../assets/plugin/layer/layer.js"></script>
+
+    <script type="text/javascript" src="../../assets/js/common.js"></script>
+
+    <!-- page content -->
+    <link rel="stylesheet" href="../../assets/plugin/bootstrap-table/bootstrap-table.min.css" />
+    <script type="text/javascript" src="../../assets/plugin/bootstrap-table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../../assets/plugin/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+
+    <style>
+        .FixedTextArea {
+            resize: none
+        }
+    </style>
+</head>
+
+<body class="no-skin">
+    <div id="navbar" class="navbar navbar-default ace-save-state"></div>
+
+    <div class="main-container ace-save-state" id="main-container">
+
+        <script type="text/javascript">
+            try { ace.settings.loadState('main-container') } catch (e) { }
+        </script>
+
+        <div id="sidebar" class="sidebar responsive ace-save-state"></div>
+
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="/Page/Index.html">系统主页</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-desktop"></i>
+                            <a href="#">系统管理</a>
+
+                        </li>
+                        <li class="active">
+                            <i class="fa fa-bars"></i>
+                            <a href="#">角色管理</a>
+                        </li>
+
+                    </ul><!-- /.breadcrumb -->
+                </div>
+
+                <div class="page-content">
+                    <div class="page-header">
+                        <h1>
+                            角色管理
+                            <small>
+                                <i class="ace-icon fa fa-angle-double-right"></i>
+                                管理角色。
+                            </small>
+                        </h1>
+                    </div><!-- /.page-header -->
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- PAGE CONTENT BEGINS -->
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="widget-box widget-color-blue2">
+                                        <div class="widget-header">
+                                            <h4 class="widget-title lighter smaller">角色列表</h4>
+                                        </div>
+
+                                        <div class="widget-body">
+                                            <div class="widget-main padding-8">
+                                                <div id="toolbar" class="btn-group">
+                                                    <button class="btn btn-success btn-sm" id="add" onclick="onView()"><i class="ace-icon fa fa-plus"></i> 新增 </button>
+                                                    <button class="btn btn-warning btn-sm" id="refresh" onclick="Query();"><i class="ace-icon fa fa-refresh"></i> 刷新 </button>
+                                                    <button class="btn btn-success btn-sm" id="update" onclick="onUpdate()"><i class="ace-icon fa fa-plus"></i>更新角色权限</button>
+                                                </div>
+
+                                                <table id="tbData" data-toggle="bootstrap-table"></table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PAGE CONTENT ENDS -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.page-content -->
+            </div>
+        </div><!-- /.main-content -->
+
+        <div class="footer">
+            <div class="footer-inner">
+
+            </div>
+        </div>
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div><!-- /.main-container -->
+
+    <div id="model_login">
+        <div class="login-container">
+            <div class="space-6"></div>
+
+            <div class="position-relative">
+                <div id="login-box" class="login-box widget-box no-border">
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <h4 class="header blue lighter bigger">
+                                <i class="fa fa-coffee green"></i>
+                                请重新登录666
+                            </h4>
+
+                            <div class="space-6"></div>
+
+                            <form>
+                                <fieldset>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="用户名" id="userName" />
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                    </div>
+
+                                    <div class="space-6"></div>
+
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" placeholder="密码" id="pwd" />
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                    </div>
+
+                                    <div class="space"></div>
+
+                                    <div class="clearfix">
+                                        <button type="button" onclick="onLogin();"
+                                                class="width-35 pull-right btn btn-sm btn-primary">
+                                            <i class="fa fa-key"></i>
+                                            登录
+                                        </button>
+                                    </div>
+
+                                    <div class="space-4"></div>
+                                </fieldset>
+                            </form>
+
+                        </div><!-- /widget-main -->
+
+                        <div class="toolbar clearfix">
+                            <div>
+                                <a href="#" onclick="onShowFoget(); return false;"
+                                   class="forgot-password-link">
+                                    <i class="fa fa-arrow-left"></i>
+                                    忘记密码
+                                </a>
+                            </div>
+                        </div>
+                    </div><!-- /widget-body -->
+                </div><!-- /login-box -->
+
+                <div id="forgot-box" class="forgot-box widget-box no-border">
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <h4 class="header red lighter bigger">
+                                <i class="icon-key"></i>
+                                找回密码
+                            </h4>
+
+                            <div class="space-6"></div>
+                            <p>
+                                请输入您的电子邮箱用以找回密码
+                            </p>
+
+                            <form>
+                                <fieldset>
+                                    <label class="block clearfix">
+                                        <span class="block input-icon input-icon-right">
+                                            <input type="email" class="form-control" placeholder="Email" />
+                                            <i class="icon-envelope"></i>
+                                        </span>
+                                    </label>
+
+                                    <div class="clearfix">
+                                        <button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+                                            <i class="icon-lightbulb"></i>
+                                            发送!
+                                        </button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div><!-- /widget-main -->
+
+                        <div class="toolbar center">
+                            <a href="#" onclick="onShowLogin(); return false;" class="back-to-login-link">
+                                Back to login
+                                <i class="icon-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div><!-- /widget-body -->
+                </div><!-- /forgot-box -->
+            </div><!-- /position-relative -->
+        </div>
+    </div>
+
+    <div id="model_role_info">
+        <div class="col-sm-12">
+            <form class="form-horizontal" role="form">
+                <div class="space-4"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="role_name"> 角色名<span class="red">*</span> </label>
+
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input type="text" id="role_name" placeholder="角色名" class="form-control" />
+                            <span class="input-group-addon">
+                                <i class="ace-icon fa fa-bars"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="role_remark"> 角色标记<span class="red">*</span> </label>
+
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input type="text" id="role_remark" placeholder="角色标记" class="form-control" />
+                            <span class="input-group-addon">
+                                <i class="ace-icon fa fa-tag"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="row_state"> 角色状态 <span class="red">*</span> </label>
+
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input type="text" id="row_state" placeholder="角色状态" class="form-control" />
+                            <span class="input-group-addon">
+                                <i class="ace-icon fa fa-info-circle"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="create_time"> 创建时间<span class="red">*</span> </label>
+
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input type="time" id="create_time" placeholder="##--##--##" class="form-control" />
+                            <span class="input-group-addon">
+                                <i class="ace-icon fa fa-map-signs"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="create_user"> 创建用户 </label>
+
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input type="number" id="create_user" placeholder="创建用户" class="form-control" />
+                            <span class="input-group-addon">
+                                <i class="ace-icon fa fa-map-signs"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="upd_time"> 更新时间 </label>
+
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input type="time" id="upd_time" class="form-control" data-placeholder="更新时间"></input>
+                            <span class="input-group-addon">
+                                <i class="ace-icon fa fa-map-marker"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="upd_user"> 更新用户<span class="red">*</span> </label>
+
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="upd_user" data-placeholder="更新用户" />
+                            <span class="input-group-addon">
+                                <i class="ace-icon fa fa-fonticons"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            initPage();
+            $("#model_role_info").hide();
+            Query();
+        });
+
+        function onSave(user_id, lock) {
+            if (!lock) {
+                lock = true;
+
+                // 接口参数
+                var para = {
+                    ApiName: 'SaveUserInfo',
+                    Data: {
+                        user_id: user_id,
+                        user_name: $("#user_name").val(),
+                        user_email: $("#user_email").val(),
+                        user_phone: $("#user_phone").val(),
+                        user_address: $("#user_address").val(),
+                        user_ent: $("#user_ent").val(),
+                        role_id: $("#user_role").val().join(","),
+                        upd_user: JSON.parse(localStorage.getItem("User")).user_id
+                    }
+                };
+
+                if (para.Data.user_name == "" || para.Data.user_email == "" || para.Data.user_phone == "" || para.Data.role_id == "") {
+                    layer.msg("请设定用户名、邮箱、电话、角色");
+                    return false;
+                }
+
+                $.ajax({
+                    type: "post",
+                    contentType: "application/json;charset=UTF-8",
+                    data: JSON.stringify(para),
+                    dataType: "json",
+                    url: "http://localhost:61482/UserManage/UserManage",
+                    success: function (data) {
+                        var jsonResult = JSON.parse(result);
+                        if (jsonResult.Result == 1) {
+                            layer.msg('保存成功', { icon: 1 });
+                        } else {
+                            layer.msg('保存失败:' + data.Message, { icon: 2 });
+                        }
+                    }
+                });
+
+                layer.closeAll();
+
+                Query();
+            }
+        }
+
+        function onDelete(user_id) {
+        }
+
+        function onSetStatus(user_id, row_state) {
+            var lock = false;
+            if (!lock) {
+                lock = true;
+
+                // 接口参数
+                var para = {
+                    ApiName: 'SetUserStatus',
+                    Data: {
+                        user_id: user_id,
+                        row_state: row_state,
+                        upd_user: JSON.parse(localStorage.getItem("User")).user_id
+                    }
+                };
+                console.log(para);
+
+                if (para.Data.user_id == null || para.Data.user_id == "undefined" || isNaN(para.Data.row_state)) {
+                    layer.msg("参数：用户ID、状态、修改者不足，请核查");
+                    return false;
+                }
+
+                $.ajax({
+                    type: "post",
+                    contentType: "application/json;charset=UTF-8",
+                    data: JSON.stringify(para),
+                    dataType: "json",
+                    url: "http://localhost:61482/UserManage/UserManage",
+                    success: function (data) {
+                        var jsonResult = JSON.parse(data);
+                        if (jsonResult.Result == 1) {
+                            layer.msg('状态修改成功', { icon: 1 });
+                        } else {
+                            layer.msg('状态修改失败:' + data.Message, { icon: 2 });
+                        }
+
+                        Query();
+                    }
+                });
+            }
+
+        }
+
+        function initMenuParent(top_menu) {
+            $("#menu_parent").empty();
+            $("#menu_parent").append($("<option></option>").attr("value", "0").html("无上级菜单"));
+            $.each(top_menu, function (i, item) {
+                $("#menu_parent").append($("<option></option>").attr("value", item.menu_id).html(item.menu_name_cn));
+            });
+        }
+        function onUpdate(role_id) {
+             if (role_id == null) {
+                $("#role_name").val("");
+                $("#role_remark").val("");
+                $("#row_state").val("");
+                $("#create_time").val("");
+                $("#create_user").val("#");
+                $("#upd_time").val("fa fa-fonticons");
+                $("#upd_user").val("#");
+            } else {
+                var data = $("#tbData").bootstrapTable('getData');
+                var role = $.grep(data, function (m) {
+                    return m.role_id == role;
+                })[0];
+                $("#role_name").val(role.role_name);
+                $("#role_remark").val(role.role_remark);
+                $("#row_state").val(role.row_state);
+                $("#create_time").val(role.create_time);
+                $("#create_user").val(role.create_user);
+
+                $("#upd_time").val(role.upd_time);
+                $("#upd_user").val(role.upd_user);
+            }
+
+            layer.open({
+                type: 1,
+                title: '更新角色权限',
+                shadeClose: false, //点击遮罩关闭
+                content: $('#model_role_info'),
+                btn: ['确定', '取消'],
+                yes: function (index, layero) {//添加人员
+                    var lock = false;//默认未锁定
+                    layer.confirm('将向服务器提交数据，请确认', { icon: 3, btn: ['确定', '取消'], title: "提示" }, function () {
+                        onSave(menu_id, lock);
+                    });
+                },
+                btn2: function (index, layero) {
+                    return;
+                },
+                cancel: function () {
+                    return;
+                },
+                end: function () {
+                    $('#model_user_info').hide();
+                }
+            });
+
+            $("#model_role_info").show();
+        }
+        function onView(role_id) {
+            if (role_id == null) {
+                $("#role_name").val("");
+                $("#role_remark").val("");
+                $("#row_state").val("");
+                $("#create_time").val("");
+                $("#create_user").val("#");
+                $("#upd_time").val("fa fa-fonticons");
+                $("#upd_user").val("#");
+            } else {
+                var data = $("#tbData").bootstrapTable('getData');
+                var role = $.grep(data, function (m) {
+                    return m.role_id == role;
+                })[0];
+                $("#role_name").val(role.role_name);
+                $("#role_remark").val(role.role_remark);
+                $("#row_state").val(role.row_state);
+                $("#create_time").val(role.create_time);
+                $("#create_user").val(role.create_user);
+
+                $("#upd_time").val(role.upd_time);
+                $("#upd_user").val(role.upd_user);
+            }
+
+            layer.open({
+                type: 1,
+                title: '角色项信息',
+                shadeClose: false, //点击遮罩关闭
+                content: $('#model_role_info'),
+                btn: ['确定', '取消'],
+                yes: function (index, layero) {//添加人员
+                    var lock = false;//默认未锁定
+                    layer.confirm('将向服务器提交数据，请确认', { icon: 3, btn: ['确定', '取消'], title: "提示" }, function () {
+                        onSave(menu_id, lock);
+                    });
+                },
+                btn2: function (index, layero) {
+                    return;
+                },
+                cancel: function () {
+                    return;
+                },
+                end: function () {
+                    $('#model_user_info').hide();
+                }
+            });
+
+            $("#model_role_info").show();
+        }
+
+        function Query(pageNumber, pageSize) {
+            if (pageNumber == null) {
+                pageNumber = 1;
+            }
+
+            if (pageSize == null) {
+                pageSize = 10;
+            }
+
+            // 接口参数
+            var para = {
+                ApiName: 'GetRoleList'
+            };
+
+            // 通过Ajax调用用户列表接口
+            $.ajax({
+                //请求方式
+                type: "POST",
+                //请求的媒体类型
+                contentType: "application/json;charset=UTF-8",
+                //数据，json字符串
+                data: JSON.stringify(para),
+                //请求地址
+                url: "http://localhost:61482/SysManage/SysManage",
+                //请求成功
+                success: function (result) {
+                    var jsonResult = JSON.parse(result);
+
+                    var options = {
+                        rowStyle: function (row, index) { //设置行的特殊样式
+                            //这里有5个取值颜色['active', 'success', 'info', 'warning', 'danger'];
+                            var strclass = "";
+                            if (index % 2) {
+                                strclass = "success";
+                            } else {
+                                strclass = "info";
+                            }
+
+                            if (row.row_state == 0) {
+                                strclass = "danger";
+                            }
+
+                            return { classes: strclass }
+                        },
+                        data: null,
+                        showLoading: true,
+                        striped: true,                      //是否显示行间隔色
+                        cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                        pagination: true,                   //是否显示分页（*）
+                        sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+                        pageNumber: 1,                       //初始化加载第一页，默认第一页
+                        pageSize: 10,                       //每页的记录行数（*）
+                        pageList: [10, 20, 50, 100],        //可供选择的每页的行数（*）
+                        clickToSelect: true,                //是否启用点击选中行
+                        uniqueId: "user_id",                     //每一行的唯一标识，一般为主键列
+                        columns: [
+                            {
+                                title: '序号', align: 'center', valign: 'middle', formatter: function (value, row, index) {
+                                    return pageSize * (pageNumber - 1) + index + 1;
+                                }
+                            },
+                            { field: 'role_name', title: '角色名', valign: 'middle' },
+                            { field: 'role_remark', title: '角色标记', valign: 'middle', visible: false },
+                            { field: 'row_state', title: '角色状态', valign: 'middle' },
+                            { field: 'create_time', title: '创建时间', valign: 'middle' },
+                            { field: 'create_user', title: '创建用户', valign: 'middle' },
+                            { field: 'upd_time', title: '更新时间', valign: 'middle' },
+                            { field: 'upd_user', title: '更新用户', valign: 'middle' },
+                            
+                            /**
+                                title: '操作', valign: 'middle', formatter: function (value, row, index) {
+                                    var btn_group = '<div class="btn-group text-nowrap">';
+                                    btn_group += '<button type="button" class="btn btn-success btn-sm item_view" name="item_view" onclick="onView(\'' + row.role_id + '\');" title = "查看/修改"> <i class="fa fa-pencil-square-o"></i> </button>';
+                                    btn_group += '<button type="button" class="btn btn-danger btn-sm item_delete" name="item_delete" onclick="onDelete(\'' + row.role_id + '\');" title="删除"><i class="fa fa-trash"></i>  </button>';
+                                    if (row.row_state == 1) {
+                                        btn_group += '<button type="button" class="btn btn-warning btn-sm item_disable" name="item_disable" onclick="onSetStatus(\'' + row.role_id + '\', 0);" title="禁用"><i class="fa fa-toggle-off"></i>  </button>';
+                                    } else {
+                                        btn_group += '<button type="button" class="btn btn-primary btn-sm item_enable" name="item_enable" onclick="onSetStatus(\'' + row.role + '\', 1);" title="启用"><i class="fa fa-toggle-on"></i>  </button>';
+                                    }
+                                    btn_group += '</div>';
+                                    return btn_group;
+                                }
+                            }
+                            **/
+                        ]
+                    };
+
+                    if (jsonResult.Result == 1) {
+                        options.data = jsonResult.Data;
+
+                        var top_menu = $.grep(jsonResult.Data, function (m) {
+                            return m.menu_level == 1;
+                        }).sort(function (a, b) {
+                            return (a.display_order - b.display_order);
+                        });
+                        initMenuParent(top_menu);
+                    } else {
+                        layer.msg(jsonResult.Message);
+                    }
+                    $('#tbData').bootstrapTable("destroy").bootstrapTable(options);
+                },
+                //请求失败，包含具体的错误信息
+                error: function (e) {
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        }
+
+    </script>
+
+    <!-- inline scripts related to this page -->
+</body>
+</html>
+
+

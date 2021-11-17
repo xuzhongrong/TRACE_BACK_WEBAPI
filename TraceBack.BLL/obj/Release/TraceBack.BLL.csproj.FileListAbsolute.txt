@@ -1,0 +1,16 @@
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\bin\Release\TraceBack.BLL.dll
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\bin\Release\TraceBack.BLL.pdb
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\bin\Release\Newtonsoft.Json.dll
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\bin\Release\TraceBack.Dal.dll
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\bin\Release\TraceBack.Model.dll
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\bin\Release\EntityFramework.dll
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\bin\Release\TraceBack.Dal.pdb
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\bin\Release\TraceBack.Dal.dll.config
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\bin\Release\TraceBack.Model.pdb
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\bin\Release\Newtonsoft.Json.xml
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\bin\Release\EntityFramework.xml
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\obj\Release\TraceBack.BLL.csprojAssemblyReference.cache
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\obj\Release\TraceBack.BLL.csproj.CopyComplete
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\obj\Release\TraceBack.BLL.dll
+D:\work\教学资料\source\TraceBack\TraceBack.BLL\obj\Release\TraceBack.BLL.pdb

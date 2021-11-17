@@ -1,0 +1,12 @@
+D:\work\教学资料\source\TraceBack\TraceBack.Dal\bin\Release\TraceBack.Dal.dll.config
+D:\work\教学资料\source\TraceBack\TraceBack.Dal\bin\Release\TraceBack.Dal.dll
+D:\work\教学资料\source\TraceBack\TraceBack.Dal\bin\Release\TraceBack.Dal.pdb
+D:\work\教学资料\source\TraceBack\TraceBack.Dal\bin\Release\EntityFramework.dll
+D:\work\教学资料\source\TraceBack\TraceBack.Dal\bin\Release\TraceBack.Model.dll
+D:\work\教学资料\source\TraceBack\TraceBack.Dal\bin\Release\TraceBack.Model.pdb
+D:\work\教学资料\source\TraceBack\TraceBack.Dal\bin\Release\EntityFramework.xml
+D:\work\教学资料\source\TraceBack\TraceBack.Dal\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\work\教学资料\source\TraceBack\TraceBack.Dal\obj\Release\TraceBack.Dal.csprojAssemblyReference.cache
+D:\work\教学资料\source\TraceBack\TraceBack.Dal\obj\Release\TraceBack.Dal.csproj.CopyComplete
+D:\work\教学资料\source\TraceBack\TraceBack.Dal\obj\Release\TraceBack.Dal.dll
+D:\work\教学资料\source\TraceBack\TraceBack.Dal\obj\Release\TraceBack.Dal.pdb

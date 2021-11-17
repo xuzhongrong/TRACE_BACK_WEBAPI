@@ -1,0 +1,5 @@
+D:\work\教学资料\source\TraceBack\TraceBack.Model\bin\Release\TraceBack.Model.dll
+D:\work\教学资料\source\TraceBack\TraceBack.Model\bin\Release\TraceBack.Model.pdb
+D:\work\教学资料\source\TraceBack\TraceBack.Model\obj\Release\TraceBack.Model.csprojAssemblyReference.cache
+D:\work\教学资料\source\TraceBack\TraceBack.Model\obj\Release\TraceBack.Model.dll
+D:\work\教学资料\source\TraceBack\TraceBack.Model\obj\Release\TraceBack.Model.pdb
